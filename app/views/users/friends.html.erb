@@ -1,0 +1,24 @@
+<h1>My Friends</h1>
+
+<div class="search-area">
+	<h3>Search Friends</h3>
+	<!-- Here we are not using model back from bcoz we dont want to edit any model attribute so form_tag is useful for search we generally use form tag -->
+	<!-- remote: true turns it into an ajax request -->
+	<%= form_tag search_friend_path, remote: true, method: :get do %>
+		<div class="form-group row">
+			<div class="col-sm-9 no-right-padding">
+				<%= text_field_tag :friend, params[:friend], placeholder: "Friend search", autofocus: true, class: "form-control form-control-lg" %>
+									<!-- url ? input_feild = params[:stock] -->
+			</div>
+			<div class="col-sm-3 no-left-padding">
+				 <%= button_tag type: :submit, class: "btn btn-secondary" do %>
+				 	<%= fa_icon 'search 2x'  %>
+				 <% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+<div id="results">
+
+</div>
+<%= render 'friends/list' %>
